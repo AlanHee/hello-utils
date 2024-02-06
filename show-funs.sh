@@ -1,7 +1,7 @@
 #!/bin/bash
 # list
 echo "Fun list:"
-cmds=(cmatrix neofetch)
+cmds=(cmatrix neofetch figlet toilet)
 for i in "${!cmds[@]}"; do
 	echo "$((i + 1)). ${cmds[$i]}"
 done
@@ -21,4 +21,10 @@ fi
 if ! type $cmd &>/dev/null; then
 	apt install -qyy $cmd
 fi
-exec $cmd
+
+if [[ $cmd == "figlet" || $cmd == "toilet" ]]; then
+	read -p "type word to show:" word
+	exec $cmd $word
+else
+	exec $cmd
+fi
