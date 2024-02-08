@@ -1,7 +1,7 @@
 #!/bin/bash
 # list
 echo "Fun list:"
-cmds=(cmatrix neofetch figlet toilet)
+cmds=(cmatrix neofetch tldr figlet toilet)
 for i in "${!cmds[@]}"; do
 	echo "$((i + 1)). ${cmds[$i]}"
 done
@@ -25,6 +25,9 @@ fi
 if [[ $cmd == "figlet" || $cmd == "toilet" ]]; then
 	read -p "type word to show:" word
 	exec $cmd $word
+elif [[ $cmd == "tldr" ]]; then
+	read -p "type cmd to example:" input_cmd
+	exec $cmd $input_cmd
 else
 	exec $cmd
 fi
