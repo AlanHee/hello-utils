@@ -12,4 +12,4 @@
 
 #apt install rsync -y
 #make sure the 'path/' and 'path' is diff 
-rsync -a --delete -P -e 'ssh -p 8022' /storage/emulated/0/Music/  u0_a141@$PHONE_IP:/storage/emulated/0/Music
+rsync --delete -rv -P -e 'ssh -p 8022' /storage/emulated/0/Music/  u0_a141@$PHONE_IP:/storage/emulated/0/Music
