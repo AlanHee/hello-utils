@@ -1,14 +1,19 @@
 #!/bin/bash
-#uage: 
-#show-cookbook.sh or sc 
+#uage:
+#show-cookbook.sh or sc
 #show-cookbook.sh git or sc git
+
+# determine weather cookbook is installed
+if [ ! -e $SRC/src/cookbook ]; then
+	git clone https://github.com/alanhee/hello-cookbook $SRC/src/cookbook
+fi
 
 # determine if bat install
 if ! type bat &>/dev/null; then
 	apt install -qyy bat
 fi
 
-if [ ! -z $1 ]; then 
+if [ ! -z $1 ]; then
 	bat $SRC/src/cookbook/$1.md
 	exit 0
 fi
@@ -24,6 +29,5 @@ done
 read -p "Choose in: " choice
 size=${#docs[@]}
 doc=${docs[choice - 1]}
-
 
 bat $SRC/src/cookbook/$doc.md
