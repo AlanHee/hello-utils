@@ -18,7 +18,12 @@ function _() {
 			echo 'ip can not be empty'
 		done
 	fi
-	scp root@$remoteIP:/root/client.ovpn ~
+
+	if [ ! -z $REMOTE_SSH_PORT ]; then
+		scp -P $REMOTE_SSH_PORT root@$remoteIP:/root/client.ovpn ~
+	else
+		scp root@$remoteIP:/root/client.ovpn ~
+	fi
 	echo 'Got it.'
 }
 
