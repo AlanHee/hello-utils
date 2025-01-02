@@ -1,12 +1,13 @@
-!/bin/bash
+#!/bin/bash
 
 OUTPUT_FILE="$1"
 DOWNLOAD_URL="$2"
 
 # print help msg
-if [ -z $1 || -z $2 ]; then
+if [ -z $1 ] || [ -z $2 ]; then
 	echo "usage: get-file.sh output_file_name download_url"
 	echo "eg: get-file.sh linux.iso http://xxx.com/xxx.iso"
+	exit 0
 fi
 
 # determine if installed aria2
