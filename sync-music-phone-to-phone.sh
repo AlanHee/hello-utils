@@ -11,5 +11,5 @@
 #rsync --dry-run
 
 #apt install rsync -y
-#make sure the 'path/' and 'path' is diff 
-rsync --delete -rv -P -e 'ssh -p 8022' /storage/emulated/0/Music/  u0_a141@$PHONE_IP:/storage/emulated/0/Music
+#make sure the 'path/' and 'path' is diff
+rsync --delete -rv -P -e "ssh -p $PHONE_PORT" /storage/emulated/0/Music/ $PHONE_USER@$PHONE_IP:/storage/emulated/0/Music
