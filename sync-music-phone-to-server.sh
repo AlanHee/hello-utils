@@ -1,3 +1,6 @@
-#!/data/data/com.termux/files/usr/bin/sh
+#!/data/data/com.termux/files/usr/bin/bash
 # rsync -rv --delete /data/data/com.termux/files/home/storage/music/ root@$REMOTE_IP:asset/music
-rsync --delete -rv -P -e "ssh -p 64263 " /storage/emulated/0/Music/ root@154.64.245.143:music-server/music
+
+# Fixed crond PATH issue.
+source /data/data/com.termux/files/home/bin/config.sh
+rsync --delete -rv -P -e "ssh -p $REMOTE_SSH_PORT " /storage/emulated/0/Music/ root@$REMOTE_IP:music-server/music
